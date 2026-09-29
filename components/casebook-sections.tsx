@@ -1,7 +1,7 @@
 import { portfolio as p } from "@/data/portfolio";
 import type { SectionKey } from "@/data/types";
 import { Database, FolderCheck, MessagesSquare, Scale, Search } from "lucide-react";
-import { AvailabilityBadge, EmptyState, LabelBadge, NumberedItem, SectionHeader } from "./casebook-primitives";
+import { AvailabilityBadge, EmptyState, LabelBadge, NumberedItem, SectionHeader, StatusBadge } from "./casebook-primitives";
 import { Credentials } from "./credentials";
 import { MetricCard } from "./metric-card";
 import { Casebook } from "./casebook";
@@ -32,3 +32,4 @@ export function SampleLibrary() { return <CasebookSection id="work-samples" sect
 export function ClaimsWorkflow() { return <CasebookSection id="workflow" section="workflow" legacy="process"><WorkflowTimeline stages={p.workflow} ui={p.ui} labels={p.labels} title={p.sections.workflow.title} /></CasebookSection>; }
 export function QualityAccuracy() { return <CasebookSection id="quality" section="quality"><QualityChecklist items={p.qualityChecklist} ui={p.ui} labels={p.labels} /></CasebookSection>; }
 export function TechnologySection() { return <CasebookSection id="technology" section="technology"><ClaimsTechnology items={p.technology} data={p.automationCase} labels={p.labels} ui={p.ui} /></CasebookSection>; }
+export function AvailabilityDeployment() { return <CasebookSection id="availability" section="availability" legacy="format"><div className="availability-intro"><AvailabilityBadge status={p.availability.status} /><LabelBadge label={p.availability.label} labels={p.labels} /></div><div className="format-grid availability-grid"><article><h3>{p.ui.workTypes}</h3><div className="actions">{p.availability.workTypes.filter(item => item.enabled).map(item => <StatusBadge key={item.title}>{item.title}</StatusBadge>)}</div></article><article><h3>{p.ui.regions}</h3><p className="fine-print">{p.ui.provinceState}</p><div className="actions">{p.availability.regions.map(region => <StatusBadge key={`${region.country}-${region.code}`}>{region.name}</StatusBadge>)}</div></article>{p.availability.relocationNote && <article><p>{p.availability.relocationNote}</p></article>}</div></CasebookSection>; }

@@ -1,4 +1,9 @@
 /* Additions compose the original palette, scale and card treatments. */
+.availability-intro { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 2rem; }
+.availability-intro .label-badge { margin: 0; }
+.availability-grid { margin-left: 0; }
+.availability-grid article { gap: 2rem; }
+.availability-grid .status-badge { color: var(--foreground); }
 .technology-groups { display: grid; gap: 2rem; }
 .technology-groups > div > h3 { font-size: 1.05rem; margin: 0 0 1.5rem; }
 .technology-card { gap: 1rem; align-items: flex-start; }
