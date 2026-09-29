@@ -1,4 +1,11 @@
 /* Additions compose the original palette, scale and card treatments. */
+.filters { display: flex; flex-wrap: wrap; gap: .75rem; margin-bottom: 2rem; }
+.filter-button { background: var(--card-bg); color: var(--foreground); border-color: var(--border); }
+.empty-actions { margin-top: 1.5rem; }
+.jurisdiction-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 2rem; margin-top: 3rem; }
+.jurisdiction-row { display: flex; align-items: center; justify-content: space-between; gap: 1rem; border-top: 1px solid var(--border); padding-block: 1.5rem; }
+.jurisdiction-row h3 { margin: 0; }
+@media (max-width: 600px) { .jurisdiction-grid { grid-template-columns: 1fr; } }
 .capability-caption { display: flex; align-items: center; gap: .75rem; margin-block: 2rem 1rem; font-size: .8rem; }
 .services-grid > *, .about-grid > *, .contact-grid > * { min-width: 0; }
 .numbered-item .label-badge { margin-bottom: 0; }

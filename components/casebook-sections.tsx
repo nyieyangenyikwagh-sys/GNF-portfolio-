@@ -2,6 +2,7 @@ import { portfolio as p } from "@/data/portfolio";
 import type { SectionKey } from "@/data/types";
 import { Database, FolderCheck, MessagesSquare, Scale, Search } from "lucide-react";
 import { AvailabilityBadge, LabelBadge, NumberedItem, SectionHeader } from "./casebook-primitives";
+import { Credentials } from "./credentials";
 
 export function CasebookSection({ id, section, legacy, children }: { id: string; section: SectionKey; legacy?: string; children: React.ReactNode }) {
   return <><div className="shell"><div className="divider" /></div><section id={id} className="section shell" aria-label={p.sections[section].title}>{legacy && <span id={legacy} className="legacy-anchor" />}<SectionHeader copy={p.sections[section]} labels={p.labels} />{children}</section></>;
@@ -13,3 +14,4 @@ export function ClaimsCapabilities() {
   const icons = { Search, Scale, FolderCheck, MessagesSquare, Database };
   return <CasebookSection id="capabilities" section="capabilities" legacy="services"><div className="services-grid">{p.capabilities.filter(item => item.enabled).map((item, index) => { const Icon = icons[item.icon]; return <div key={item.category}><NumberedItem number={String(index + 1).padStart(2, "0")} title={item.title} description={item.description} bullets={item.items}><div className="capability-caption"><Icon size={20} aria-hidden="true" /><strong>{item.category}</strong></div><LabelBadge label={item.label} labels={p.labels} /></NumberedItem></div>; })}</div></CasebookSection>;
 }
+export function LicensesCertifications() { return <CasebookSection id="credentials" section="credentials"><Credentials credentials={p.credentials} jurisdictions={p.jurisdictionStatus} ui={p.ui} labels={p.labels} /></CasebookSection>; }
