@@ -1,4 +1,7 @@
 /* Additions compose the original palette, scale and card treatments. */
+.capability-caption { display: flex; align-items: center; gap: .75rem; margin-block: 2rem 1rem; font-size: .8rem; }
+.services-grid > *, .about-grid > *, .contact-grid > * { min-width: 0; }
+.numbered-item .label-badge { margin-bottom: 0; }
 .facts { display: grid; gap: 1.5rem; margin-block: 2rem; }
 .facts dt { font-size: .76rem; font-weight: 800; margin-bottom: .5rem; }
 .facts dd { margin: 0; color: var(--muted); line-height: 1.6; overflow-wrap: anywhere; }
