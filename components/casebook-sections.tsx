@@ -5,6 +5,8 @@ import { AvailabilityBadge, EmptyState, LabelBadge, NumberedItem, SectionHeader 
 import { Credentials } from "./credentials";
 import { MetricCard } from "./metric-card";
 import { Casebook } from "./casebook";
+import { WorkSamples } from "./work-samples";
+import { existingDocument } from "@/lib/documents";
 
 export function CasebookSection({ id, section, legacy, children }: { id: string; section: SectionKey; legacy?: string; children: React.ReactNode }) {
   return <><div className="shell"><div className="divider" /></div><section id={id} className="section shell" aria-label={p.sections[section].title}>{legacy && <span id={legacy} className="legacy-anchor" />}<SectionHeader copy={p.sections[section]} labels={p.labels} />{children}</section></>;
@@ -23,3 +25,4 @@ export function Performance() {
   return <CasebookSection id="performance" section="metrics">{shown.length ? <div className="stats-grid metrics-grid">{shown.map(item => <MetricCard key={item.title} metric={item} labels={p.labels} addMetric={p.ui.addMetric} />)}</div> : <EmptyState title={p.ui.metricEmpty} body={p.ui.metricEmptyBody} />}{real.length > 0 && <p className="fine-print">{p.ui.metricDisclaimer}</p>}</CasebookSection>;
 }
 export function CasebookLibrary() { return <CasebookSection id="casebook" section="casebook"><Casebook cases={p.caseStudies} ui={p.ui} labels={p.labels} title={p.sections.casebook.title} /></CasebookSection>; }
+export function SampleLibrary() { return <CasebookSection id="work-samples" section="samples"><WorkSamples samples={p.workSamples.map(sample => ({ ...sample, file: existingDocument(sample.file ?? "") }))} ui={p.ui} labels={p.labels} title={p.sections.samples.title} /></CasebookSection>; }

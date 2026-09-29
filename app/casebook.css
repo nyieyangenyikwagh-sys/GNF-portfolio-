@@ -1,4 +1,30 @@
 /* Additions compose the original palette, scale and card treatments. */
+.sample-notice { border-block: 1px solid var(--border); padding-block: 1.5rem; margin: 0 0 2rem; line-height: 1.6; }
+.document-card { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; }
+.document-card p { margin: 0; }
+.document-card .case-toggle { margin-top: auto; }
+.document-preview { width: 100%; background: var(--background); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem; margin-bottom: 1rem; display: grid; gap: 1rem; color: var(--muted); font-size: .68rem; font-weight: 800; }
+.redaction-bars { display: grid; gap: .5rem; width: 100%; margin-block: 1rem; }
+.redaction-bars span { height: .75rem; background: var(--muted); width: 80%; }
+.redaction-bars span:nth-child(2) { width: 55%; }
+.redaction-bars span:nth-child(3) { width: 65%; }
+.document-dialog { width: min(1000px, calc(100% - 2rem)); max-width: 100%; max-height: calc(100dvh - 2rem); padding: 0; background: var(--background); color: var(--foreground); border: 1px solid var(--border); border-radius: 16px; overflow: auto; }
+.document-dialog::backdrop { background: rgba(17,17,17,.75); }
+.viewer-header { display: flex; justify-content: space-between; align-items: flex-start; gap: 1rem; padding: 1.5rem; }
+.viewer-header h2 { font-size: clamp(1.25rem, 2vw, 2rem); line-height: 1.1; margin: 1rem 0; letter-spacing: -.035em; }
+.viewer-header .fine-print { margin: 0; }
+.viewer-toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: .75rem; border-block: 1px solid var(--border); padding: .75rem 1.5rem; }
+.toolbar-group { display: flex; align-items: center; gap: .5rem; font-size: .8rem; }
+.icon-button { width: 44px; height: 44px; flex-shrink: 0; display: inline-grid; place-items: center; background: var(--card-bg); color: var(--foreground); border: 1px solid var(--border); border-radius: 999px; }
+.document-stage { padding: 2rem; height: min(60dvh, 650px); overflow: auto; background: var(--card-bg); }
+.sample-paper { position: relative; min-height: 100%; min-width: 220px; margin: 0 auto; padding: clamp(1.5rem, 4vw, 4rem); background: var(--background); border: 1px solid var(--border); overflow-wrap: anywhere; isolation: isolate; }
+.sample-paper p { line-height: 1.7; }
+.sample-paper h3 { font-size: 1.5em; margin: 0; }
+.sample-watermark { position: absolute; inset: 45% 0 auto; text-align: center; font-size: 4em; font-weight: 850; color: var(--border); transform: rotate(-25deg); z-index: -1; pointer-events: none; }
+.paper-footer { border-top: 1px solid var(--border); padding-top: 1rem; color: var(--muted); font-size: .8em; }
+.pdf-frame { width: 100%; height: 100%; min-height: 350px; border: 0; }
+.pdf-notice { padding-inline: 1.5rem; }
+@media (max-width: 600px) { .document-stage { padding: 1rem; } .viewer-header, .viewer-toolbar { padding: 1rem; } }
 .case-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem; align-items: start; }
 .case-card { height: auto; }
 .case-top { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
