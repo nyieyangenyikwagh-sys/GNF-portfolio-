@@ -33,3 +33,12 @@ export function ClaimsWorkflow() { return <CasebookSection id="workflow" section
 export function QualityAccuracy() { return <CasebookSection id="quality" section="quality"><QualityChecklist items={p.qualityChecklist} ui={p.ui} labels={p.labels} /></CasebookSection>; }
 export function TechnologySection() { return <CasebookSection id="technology" section="technology"><ClaimsTechnology items={p.technology} data={p.automationCase} labels={p.labels} ui={p.ui} /></CasebookSection>; }
 export function AvailabilityDeployment() { return <CasebookSection id="availability" section="availability" legacy="format"><div className="availability-intro"><AvailabilityBadge status={p.availability.status} /><LabelBadge label={p.availability.label} labels={p.labels} /></div><div className="format-grid availability-grid"><article><h3>{p.ui.workTypes}</h3><div className="actions">{p.availability.workTypes.filter(item => item.enabled).map(item => <StatusBadge key={item.title}>{item.title}</StatusBadge>)}</div></article><article><h3>{p.ui.regions}</h3><p className="fine-print">{p.ui.provinceState}</p><div className="actions">{p.availability.regions.map(region => <StatusBadge key={`${region.country}-${region.code}`}>{region.name}</StatusBadge>)}</div></article>{p.availability.relocationNote && <article><p>{p.availability.relocationNote}</p></article>}</div></CasebookSection>; }
+export function ProfessionalDocuments() {
+  const documents = p.documents.map(item => ({ ...item, file: existingDocument(item.file) })).filter(item => item.file);
+  if (!documents.length) return null;
+  return <CasebookSection id="documents" section="documents"><div className="services-grid">{documents.map(item => <article key={item.name} className="numbered-item document-card"><LabelBadge label={item.label} labels={p.labels} /><h3>{item.name}</h3><p>{item.type}</p><div className="actions"><a className="button button-primary" href={item.file} target="_blank" rel="noreferrer">{p.ui.view}</a><a className="arrow-link" href={item.file} download>{p.ui.download}</a></div></article>)}</div></CasebookSection>;
+}
+export function FieldReadiness() {
+  if (!p.equipment.visible || !p.equipment.items.length) return null;
+  return <CasebookSection id="field-readiness" section="equipment"><LabelBadge label={p.equipment.label} labels={p.labels} /><ul className="readiness-list">{p.equipment.items.map(item => <li key={item}>{item}</li>)}</ul></CasebookSection>;
+}
