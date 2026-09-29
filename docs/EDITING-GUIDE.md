@@ -36,6 +36,14 @@ Set a sample's `pages` to the actual PDF page count. Native browser PDF embeddin
 
 ## Privacy and defaults
 
+### Contact delivery
+
+`contact.mode = "mailto"` is the default. Set `profile.email` to your own address; submission opens the visitor's email application and explicitly tells them to review and send the draft. The site does not claim an email was sent.
+
+For Formspree, select `formspree` and supply the form ID in `contact.formspreeId`. The ID is public, not a private key. For Resend, select `resend`, copy `.env.example` to `.env.local`, and supply `RESEND_API_KEY`, a verified sender in `CONTACT_FROM_EMAIL`, and your destination in `CONTACT_TO_EMAIL`. Restart the server after environment changes. `/api/contact` validates requests and performs the provider request only on the server. Keep environment files out of Git.
+
+The form includes a honeypot and length/email validation. An unconfigured destination disables submission. Provider delivery is not guaranteed by a successful client-side validation check; test your own configured delivery before publishing. Placeholder document downloads are clearly marked text samples; real PDFs download unchanged.
+
 Never put confidential claimant, carrier, policy, medical or financial information in the data file, PDFs, source control or contact form tests. Use obviously synthetic identities such as Claimant A. Regulatory frameworks are not enabled by default; add awareness/working-knowledge wording only when accurate. No legal licensing requirements are asserted.
 
 Development logs list empty/placeholder fields, including optional fields. These are expected owner-editing reminders, not evidence that optional values must be supplied. Production does not emit these warnings.

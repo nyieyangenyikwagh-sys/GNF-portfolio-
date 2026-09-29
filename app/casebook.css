@@ -1,4 +1,16 @@
 /* Additions compose the original palette, scale and card treatments. */
+.contact-details .label-badge { margin-top: 1rem; }
+.inquiry-form { display: grid; gap: 1.25rem; }
+.contact-section .fine-print { color: #aaa; }
+.form-field { display: grid; gap: .75rem; }
+.form-field label { font-size: .8rem; font-weight: 700; }
+.form-field input, .form-field textarea { width: 100%; min-width: 0; min-height: 46px; border: 1px solid #555; border-radius: 16px; padding: 1rem; font: inherit; font-size: 1rem; background: var(--foreground); color: #fff; }
+.form-field textarea { resize: vertical; }
+.inquiry-form .button-primary { justify-self: start; background: var(--background); color: var(--foreground); }
+.form-error, .form-notice, .form-status { font-size: .85rem; line-height: 1.6; margin: 0; }
+.form-error { border-left: 1px solid var(--accent); padding-left: .75rem; }
+.form-notice { color: #aaa; }
+.honeypot { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
 .availability-intro { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; margin-bottom: 2rem; }
 .availability-intro .label-badge { margin: 0; }
 .availability-grid { margin-left: 0; }
