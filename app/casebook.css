@@ -1,4 +1,13 @@
 /* Additions compose the original palette, scale and card treatments. */
+.facts { display: grid; gap: 1.5rem; margin-block: 2rem; }
+.facts dt { font-size: .76rem; font-weight: 800; margin-bottom: .5rem; }
+.facts dd { margin: 0; color: var(--muted); line-height: 1.6; overflow-wrap: anywhere; }
+.background-block { border-top: 1px solid var(--border); padding-top: 2rem; }
+.background-block .label-badge { margin-top: 1rem; }
+.focus-list { list-style: none; padding: 0; margin: 0; }
+.focus-list li { display: flex; flex-wrap: wrap; gap: .75rem; border-top: 1px solid var(--border); padding-block: 1.25rem; }
+.focus-list strong { flex: 1; font-size: .85rem; }
+.focus-list .label-badge { margin: 0; }
 .skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 100; transform: translateY(-200%); }
 .skip-link:focus { transform: translateY(0); }
 .label-badge, .status-badge { display: inline-flex; align-items: center; width: fit-content; max-width: 100%; padding: .5rem .75rem; border: 1px solid var(--border); border-radius: 999px; color: var(--foreground); font-size: .68rem; font-weight: 800; line-height: 1.5; letter-spacing: .04em; }

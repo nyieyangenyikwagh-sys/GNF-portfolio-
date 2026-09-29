@@ -1,0 +1,10 @@
+import { portfolio as p } from "@/data/portfolio";
+import type { SectionKey } from "@/data/types";
+import { AvailabilityBadge, LabelBadge, SectionHeader } from "./casebook-primitives";
+
+export function CasebookSection({ id, section, legacy, children }: { id: string; section: SectionKey; legacy?: string; children: React.ReactNode }) {
+  return <><div className="shell"><div className="divider" /></div><section id={id} className="section shell" aria-label={p.sections[section].title}>{legacy && <span id={legacy} className="legacy-anchor" />}<SectionHeader copy={p.sections[section]} labels={p.labels} />{children}</section></>;
+}
+export function ProfessionalProfile() {
+  return <CasebookSection id="profile" section="profile" legacy="about"><div className="about-grid"><article className="numbered-item profile-card"><LabelBadge label={p.profile.label} labels={p.labels} /><h3>{p.profile.name}</h3><p>{p.profile.title}</p><p>{p.profile.bio}</p><dl className="facts"><div><dt>{p.ui.location}</dt><dd>{p.profile.location || "—"}</dd></div><div><dt>{p.ui.experience}</dt><dd>{p.profile.yearsExperience}</dd></div><div><dt>{p.ui.jurisdictionInterest} · {p.ui.provinceState}</dt><dd>{p.jurisdictionStatus.filter(item => item.visible).map(item => item.region.name).join(" · ")}</dd></div><div><dt>{p.ui.specialties}</dt><dd>{p.profile.specialties.join(" · ")}</dd></div><div><dt>{p.ui.availability}</dt><dd><AvailabilityBadge status={p.availability.status} /></dd></div></dl>{p.profile.email && <a className="arrow-link" href={`mailto:${p.profile.email}`}>{p.profile.email}</a>}<div className="background-block"><h3>{p.ui.background}</h3><LabelBadge label="REAL_EXPERIENCE" labels={p.labels} /><p>{p.profile.background}</p></div></article><aside><p className="eyebrow">{p.ui.currentFocus}</p><ul className="focus-list">{p.focusAreas.filter(item => item.enabled).map((item, i) => <li key={item.title}><span className="fine-print">{String(i + 1).padStart(2, "0")}</span><strong>{item.title}</strong><LabelBadge label={item.label} labels={p.labels} /></li>)}</ul></aside></div></CasebookSection>;
+}

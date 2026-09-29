@@ -9,7 +9,7 @@ async function command(args) {
   });
 }
 const checks = await Promise.all([command(['node_modules/eslint/bin/eslint.js', '.']), command(['node_modules/typescript/bin/tsc', '--noEmit'])]);
-const response = await fetch(process.env.CASEBOOK_URL || 'http://localhost:3000');
+const response = await fetch(process.env.CASEBOOK_URL || 'http://localhost:3000', { signal: AbortSignal.timeout(60000) });
 const html = await response.text();
 if (!response.ok || !html.includes(section) || html.includes('NEXT_HTTP_ERROR_FALLBACK;500')) throw new Error(`Render failed: ${response.status} / ${section}`);
 await mkdir('.tools', { recursive: true });
