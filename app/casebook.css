@@ -1,4 +1,12 @@
 /* Additions compose the original palette, scale and card treatments. */
+.quality-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
+.quality-rows { border-top: 1px solid var(--border); }
+.quality-row { display: grid; grid-template-columns: 44px 44px 1fr; align-items: start; gap: 1rem; border-bottom: 1px solid var(--border); padding-block: 1.5rem; cursor: pointer; }
+.quality-row input { width: 24px; height: 24px; margin: 0; accent-color: var(--foreground); }
+.quality-row strong { font-size: 1rem; }
+.quality-description { display: block; margin-block: .75rem; color: var(--muted); line-height: 1.6; }
+.quality-row .label-badge { margin: 0; }
+@media (max-width: 600px) { .quality-row { grid-template-columns: 24px 1fr; } .quality-row > .fine-print { display: none; } .quality-heading { align-items: flex-start; flex-direction: column; } }
 .workflow-timeline { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: .5rem; margin-bottom: 2rem; }
 .workflow-stage { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1rem .75rem; border: 1px solid var(--border); border-radius: 16px; background: var(--card-bg); color: var(--foreground); text-align: left; min-height: 145px; }
 .workflow-stage span { font-size: .8rem; }

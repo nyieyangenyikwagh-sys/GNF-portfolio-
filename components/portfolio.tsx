@@ -5,7 +5,7 @@ import { existingDocument } from "@/lib/documents";
 import { Header } from "./header";
 import { Reveal } from "./reveal";
 import { Button, LabelBadge, StatusBadge } from "./casebook-primitives";
-import { CasebookLibrary, ClaimsCapabilities, ClaimsWorkflow, LicensesCertifications, Performance, ProfessionalProfile, SampleLibrary } from "./casebook-sections";
+import { CasebookLibrary, ClaimsCapabilities, ClaimsWorkflow, LicensesCertifications, Performance, ProfessionalProfile, QualityAccuracy, SampleLibrary } from "./casebook-sections";
 export default function Portfolio() {
   warnPlaceholders(p);
   const resume = existingDocument(p.profile.resumeFile);
@@ -17,5 +17,6 @@ export default function Portfolio() {
   <CasebookLibrary />
   <SampleLibrary />
   <ClaimsWorkflow />
+  <QualityAccuracy />
   </main></>;
 }
