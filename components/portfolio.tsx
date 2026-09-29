@@ -3,6 +3,7 @@ import { portfolio as p } from "@/data/portfolio";
 import { warnPlaceholders } from "@/lib/placeholders";
 import { existingDocument } from "@/lib/documents";
 import { Header } from "./header";
+import { Footer } from "./footer";
 import { Reveal } from "./reveal";
 import { Button, LabelBadge, StatusBadge } from "./casebook-primitives";
 import { AvailabilityDeployment, CasebookLibrary, ClaimsCapabilities, ClaimsWorkflow, ContactSection, FieldReadiness, LicensesCertifications, Performance, ProfessionalDocuments, ProfessionalProfile, QualityAccuracy, SampleLibrary, TechnologySection } from "./casebook-sections";
@@ -23,5 +24,5 @@ export default function Portfolio() {
   <ProfessionalDocuments />
   <FieldReadiness />
   <ContactSection />
-  </main></>;
+  </main><Footer /></>;
 }
