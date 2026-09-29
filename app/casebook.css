@@ -1,4 +1,14 @@
 /* Additions compose the original palette, scale and card treatments. */
+.workflow-timeline { display: grid; grid-template-columns: repeat(9, minmax(0, 1fr)); gap: .5rem; margin-bottom: 2rem; }
+.workflow-stage { display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; padding: 1rem .75rem; border: 1px solid var(--border); border-radius: 16px; background: var(--card-bg); color: var(--foreground); text-align: left; min-height: 145px; }
+.workflow-stage span { font-size: .8rem; }
+.workflow-stage strong { font-size: .76rem; line-height: 1.4; overflow-wrap: anywhere; }
+.workflow-stage.selected { background: var(--foreground); color: var(--background); }
+.workflow-fields { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 2rem; margin-top: 2rem; }
+.workflow-fields h4 { font-size: .8rem; margin: 0; }
+.workflow-fields ul { margin-top: 1rem; line-height: 1.7; }
+@media (max-width: 820px) { .workflow-timeline { grid-template-columns: 1fr; gap: 0; } .workflow-stage { min-height: 60px; border-radius: 0; border-width: 0 0 1px; flex-direction: row; align-items: center; padding: 1rem; } .workflow-fields { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .workflow-fields { grid-template-columns: 1fr; } }
 .sample-notice { border-block: 1px solid var(--border); padding-block: 1.5rem; margin: 0 0 2rem; line-height: 1.6; }
 .document-card { display: flex; flex-direction: column; align-items: flex-start; gap: .75rem; }
 .document-card p { margin: 0; }
