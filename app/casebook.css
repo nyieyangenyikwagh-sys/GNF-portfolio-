@@ -1,4 +1,28 @@
 /* Additions compose the original palette, scale and card treatments. */
+.technology-groups { display: grid; gap: 2rem; }
+.technology-groups > div > h3 { font-size: 1.05rem; margin: 0 0 1.5rem; }
+.technology-card { gap: 1rem; align-items: flex-start; }
+.technology-card h4 { font-size: 1.55rem; margin: 0; }
+.automation-case { margin-top: clamp(3rem, 6vw, 6rem); border-top: 1px solid var(--border); padding-top: clamp(3rem, 6vw, 6rem); }
+.automation-case h3 { font-size: clamp(2.5rem, 5vw, 4rem); line-height: .98; letter-spacing: -.055em; margin: 0; }
+.automation-description { color: var(--muted); font-size: 1.12rem; line-height: 1.6; max-width: 620px; margin-block: 2rem; }
+.pipeline-diagram { list-style: none; display: grid; gap: 0; padding: 0; margin: 0; }
+.pipeline-diagram li { display: flex; align-items: center; gap: 1rem; border-bottom: 1px solid var(--border); padding-block: 1rem; font-size: .8rem; }
+.pipeline-diagram li svg { margin-left: auto; }
+.dashboard-mock { margin-top: clamp(3rem, 6vw, 6rem); padding: clamp(1.5rem, 2.3vw, 2.3rem); background: var(--card-bg); border-radius: 16px; }
+.dashboard-heading { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1rem; align-items: center; margin-bottom: 2rem; }
+.dashboard-heading p { margin: 0; font-size: .8rem; font-weight: 800; }
+.dashboard-heading .label-badge { margin: 0; }
+.dashboard-stats { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 1rem; }
+.dashboard-stats .stat { background: var(--background); gap: 1rem; }
+.dashboard-stats h5 { font-size: .82rem; margin: 0; }
+.dashboard-stats p { margin: 0; }
+.query-panel { margin-top: 2rem; }
+.query-panel h4 { font-size: .8rem; }
+.query-panel pre { overflow-x: auto; max-width: 100%; background: var(--foreground); color: var(--background); padding: 1.5rem; border-radius: 16px; font-size: .85rem; line-height: 1.7; }
+.related-project { margin-top: 2rem; }
+@media (max-width: 1050px) { .dashboard-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 600px) { .dashboard-stats { grid-template-columns: 1fr; } }
 .quality-heading { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; }
 .quality-rows { border-top: 1px solid var(--border); }
 .quality-row { display: grid; grid-template-columns: 44px 44px 1fr; align-items: start; gap: 1rem; border-bottom: 1px solid var(--border); padding-block: 1.5rem; cursor: pointer; }

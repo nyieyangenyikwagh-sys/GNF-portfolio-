@@ -9,6 +9,7 @@ import { WorkSamples } from "./work-samples";
 import { existingDocument } from "@/lib/documents";
 import { WorkflowTimeline } from "./workflow-timeline";
 import { QualityChecklist } from "./quality-checklist";
+import { ClaimsTechnology } from "./claims-technology";
 
 export function CasebookSection({ id, section, legacy, children }: { id: string; section: SectionKey; legacy?: string; children: React.ReactNode }) {
   return <><div className="shell"><div className="divider" /></div><section id={id} className="section shell" aria-label={p.sections[section].title}>{legacy && <span id={legacy} className="legacy-anchor" />}<SectionHeader copy={p.sections[section]} labels={p.labels} />{children}</section></>;
@@ -30,3 +31,4 @@ export function CasebookLibrary() { return <CasebookSection id="casebook" sectio
 export function SampleLibrary() { return <CasebookSection id="work-samples" section="samples"><WorkSamples samples={p.workSamples.map(sample => ({ ...sample, file: existingDocument(sample.file ?? "") }))} ui={p.ui} labels={p.labels} title={p.sections.samples.title} /></CasebookSection>; }
 export function ClaimsWorkflow() { return <CasebookSection id="workflow" section="workflow" legacy="process"><WorkflowTimeline stages={p.workflow} ui={p.ui} labels={p.labels} title={p.sections.workflow.title} /></CasebookSection>; }
 export function QualityAccuracy() { return <CasebookSection id="quality" section="quality"><QualityChecklist items={p.qualityChecklist} ui={p.ui} labels={p.labels} /></CasebookSection>; }
+export function TechnologySection() { return <CasebookSection id="technology" section="technology"><ClaimsTechnology items={p.technology} data={p.automationCase} labels={p.labels} ui={p.ui} /></CasebookSection>; }
