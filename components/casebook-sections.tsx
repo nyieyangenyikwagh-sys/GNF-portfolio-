@@ -1,8 +1,9 @@
 import { portfolio as p } from "@/data/portfolio";
 import type { SectionKey } from "@/data/types";
 import { Database, FolderCheck, MessagesSquare, Scale, Search } from "lucide-react";
-import { AvailabilityBadge, LabelBadge, NumberedItem, SectionHeader } from "./casebook-primitives";
+import { AvailabilityBadge, EmptyState, LabelBadge, NumberedItem, SectionHeader } from "./casebook-primitives";
 import { Credentials } from "./credentials";
+import { MetricCard } from "./metric-card";
 
 export function CasebookSection({ id, section, legacy, children }: { id: string; section: SectionKey; legacy?: string; children: React.ReactNode }) {
   return <><div className="shell"><div className="divider" /></div><section id={id} className="section shell" aria-label={p.sections[section].title}>{legacy && <span id={legacy} className="legacy-anchor" />}<SectionHeader copy={p.sections[section]} labels={p.labels} />{children}</section></>;
@@ -15,3 +16,8 @@ export function ClaimsCapabilities() {
   return <CasebookSection id="capabilities" section="capabilities" legacy="services"><div className="services-grid">{p.capabilities.filter(item => item.enabled).map((item, index) => { const Icon = icons[item.icon]; return <div key={item.category}><NumberedItem number={String(index + 1).padStart(2, "0")} title={item.title} description={item.description} bullets={item.items}><div className="capability-caption"><Icon size={20} aria-hidden="true" /><strong>{item.category}</strong></div><LabelBadge label={item.label} labels={p.labels} /></NumberedItem></div>; })}</div></CasebookSection>;
 }
 export function LicensesCertifications() { return <CasebookSection id="credentials" section="credentials"><Credentials credentials={p.credentials} jurisdictions={p.jurisdictionStatus} ui={p.ui} labels={p.labels} /></CasebookSection>; }
+export function Performance() {
+  const real = p.metrics.filter(item => item.label === "REAL_EXPERIENCE" && item.value !== null && item.value !== "" && item.value !== "—" && (typeof item.value !== "number" || Number.isFinite(item.value)) && !String(item.value).includes("["));
+  const shown = process.env.NODE_ENV === "development" ? p.metrics.map(item => real.includes(item) ? item : { ...item, value: null }) : real;
+  return <CasebookSection id="performance" section="metrics">{shown.length ? <div className="stats-grid metrics-grid">{shown.map(item => <MetricCard key={item.title} metric={item} labels={p.labels} addMetric={p.ui.addMetric} />)}</div> : <EmptyState title={p.ui.metricEmpty} body={p.ui.metricEmptyBody} />}{real.length > 0 && <p className="fine-print">{p.ui.metricDisclaimer}</p>}</CasebookSection>;
+}
