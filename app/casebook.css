@@ -1,0 +1,34 @@
+/* Additions compose the original palette, scale and card treatments. */
+.skip-link { position: fixed; top: 1rem; left: 1rem; z-index: 100; transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+.label-badge, .status-badge { display: inline-flex; align-items: center; width: fit-content; max-width: 100%; padding: .5rem .75rem; border: 1px solid var(--border); border-radius: 999px; color: var(--foreground); font-size: .68rem; font-weight: 800; line-height: 1.5; letter-spacing: .04em; }
+.label-badge { background: var(--background); }
+.status-badge { background: var(--card-bg); }
+.hero-workflow { width: min(100%, 430px); }
+.workflow-caption { font-size: 1.05rem; font-weight: 700; margin-block: 1.5rem; }
+.hero-stages { list-style: none; padding: 0; margin: 0; display: grid; gap: .75rem; }
+.hero-stages li { display: flex; align-items: center; gap: 1rem; background: var(--card-bg); border-radius: 16px; padding: 1.25rem 1.5rem; font-size: .76rem; }
+.hero-stages li span { color: var(--muted); }
+.hero-stages li svg { margin-left: auto; }
+.hero-flow { border-top: 1px solid var(--accent); padding-top: 1.5rem; font-size: .8rem; line-height: 1.7; position: relative; }
+.hero-flow::before { content: ""; position: absolute; top: -2px; left: 0; width: 2rem; height: 3px; background: var(--accent-secondary); animation: flow-line 6s cubic-bezier(.22, 1, .36, 1) infinite; }
+@keyframes flow-line { 0%, 100% { left: 0; } 70% { left: calc(100% - 2rem); } }
+.fine-print { color: var(--muted); font-size: .8rem; line-height: 1.6; }
+.actions { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+.hero-value { margin-top: clamp(3rem, 6vw, 6rem); }
+.hero-value .status-badge { border: 0; padding: 0; background: transparent; line-height: 2; font-size: .8rem; }
+.section .label-badge { margin-bottom: 1rem; }
+.empty-state { min-height: auto; }
+.legacy-anchor { display: block; scroll-margin-top: 100px; }
+button, a, input, textarea { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+button:disabled { cursor: default; opacity: .55; }
+.arrow-link, .desktop-nav a, .menu-button, .footer a { min-height: 44px; align-content: center; }
+.menu-button { min-width: 44px; }
+.brand { overflow-wrap: anywhere; }
+.header .brand { max-width: 140px; }
+.hero h1 { overflow-wrap: anywhere; }
+.mobile-menu { overflow-y: auto; }
+.mobile-menu nav a { font-size: clamp(1.45rem, 5vh, 3.5rem); }
+@media (max-width: 1150px) { .header-inner { grid-template-columns: 1fr auto; } .desktop-nav, .header-cta { display: none; } .menu-button { display: flex; } }
+@media (prefers-reduced-motion: reduce) { .hero-flow::before { animation: none; } }
