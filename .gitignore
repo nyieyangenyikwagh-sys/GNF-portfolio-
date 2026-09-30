@@ -6,3 +6,5 @@ out/
 !.env.example
 .tools/
 test-results/
+AGENTS.md
+CLAUDE.md

@@ -1,6 +1,6 @@
 # Claims Professional Casebook — audit and migration plan
 
-Phase 1 checkpoint, 2026-09-28. Application source has not been changed. This document is the only intentional Phase 1 addition. Implementation awaits the requested interactive checkpoint.
+Phase 1 checkpoint, 2026-09-28. This audit preceded implementation; the approved implementation is now complete as of 2026-09-30.
 
 ## Repository audit
 
@@ -110,7 +110,7 @@ The site is light-only. The dark contact section and mobile overlay are local in
 - No skip link, contact form, document modal or semantic content labels.
 - Eight new navigation labels may exceed the existing desktop header at intermediate widths. Preserve overlay behavior and use it earlier if measured fit requires it; document any breakpoint adjustment.
 - Accent small text and focus outlines need measured contrast checks. If needed use existing foreground for readable text and retain accent decoratively, without changing tokens.
-- Baseline `npx tsc --noEmit` passes. `npm run lint` passes with zero errors and one pre-existing `@next/next/no-img-element` warning at components/portfolio.tsx:487 for the missing hero image. Runtime/build/browser checks are deferred to implementation; no claims of visual verification are made here.
+- Baseline `npx tsc --noEmit` passed. Final lint and TypeScript checks pass with zero errors. The original `@next/next/no-img-element` warning was removed when the missing portrait hero was replaced by the workflow visual. Final production build, responsive browser checks and interaction QA are recorded in the delivery report and `.tools` QA artifacts (ignored from Git).
 
 ## Section mapping
 
@@ -167,6 +167,8 @@ Keep route `/` and existing `#top`, `#services`, `#process`, `#format`, `#about`
 - Compare original theme/font/config against baseline; report additions separately from token changes. Original globals.css SHA256: `0CA5664AC16C9FA180640159E81F4C91FA072EACA958E0838E18C1FF468B2DA3`.
 - Deliver accurate EDITING-GUIDE and this evolving plan; report files created/modified/removed, dependencies, limitations, checks actually completed, deviations and all remaining owner-supplied fields.
 
-## Checkpoint
+## Completion update
 
-Phase 1 audit and mapping are complete. No Phase 2 data files or application changes have begun. Present this plan to the user before implementation, as explicitly requested.
+The Phase 1 plan was presented and approved. Phases 2–4 are now implemented. The original global design tokens remain unchanged; `app/casebook.css` adds scoped layouts and interaction styles that compose the same palette, typography, spacing and radii. No application dependency was added. See `docs/EDITING-GUIDE.md` for the editable configuration and known browser-dependent native PDF behavior.
+
+Final QA: `npm run build` passes with `/` static, `/api/contact` dynamic and `/icon.svg` static. Lint and TypeScript pass. Headless Chrome checks pass at 1440, 1280, 1024, 768, 390 and 375px under light and dark OS preferences with no horizontal overflow; keyboard/mouse filters, accordions, workflow, checklist, mobile menu, modal focus containment, Escape/backdrop closing, zoom/page controls, synthetic PDF embedding and contact validation pass. Axe reports no modal violations and only the preserved original peach brand/kicker contrast findings on the page. Those token values were intentionally preserved per the design-preservation rule.

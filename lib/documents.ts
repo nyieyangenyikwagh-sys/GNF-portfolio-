@@ -8,5 +8,8 @@ export function existingDocument(file: string): string {
   const target = path.resolve(process.cwd(), "public", file.slice(1));
   if (!target.startsWith(root + path.sep) || !existsSync(target)) return "";
   const real = realpathSync(target);
-  return real.startsWith(realpathSync(root) + path.sep) && statSync(real).isFile() ? file : "";
+  return real.startsWith(realpathSync(root) + path.sep) &&
+    statSync(real).isFile()
+    ? file
+    : "";
 }

@@ -1,52 +1,288 @@
-export type ContentLabel = "REAL_EXPERIENCE" | "DEMONSTRATION" | "SAMPLE_REDACTED";
+export type ContentLabel =
+  "REAL_EXPERIENCE" | "DEMONSTRATION" | "SAMPLE_REDACTED";
 export type Labelled = { label: ContentLabel };
-export type Region = { code: string; name: string; country: "CA" | "US" | "REMOTE" };
-export type CredentialStatus = "ACTIVE" | "EXPIRED" | "PENDING" | "IN_PROGRESS" | "PLACEHOLDER";
-export type CredentialCategory = "Licenses" | "Industry Certifications" | "Software" | "Professional Development";
-export type Credential = Labelled & { id: string; name: string; issuer: string; jurisdiction: Region | null; number: string; issued: string; expires: string; status: CredentialStatus; verifyUrl: string; category: CredentialCategory };
-export type Metric = Labelled & { title: string; value: string | number | null; unit: string; note: string };
-export type CaseStep = "assignment" | "investigation" | "documentation" | "analysis" | "resolution" | "lessons";
-export type CaseStudy = Labelled & { id: string; claimType: string; region: Region; complexity: string; status: string; title: string; summary: string; steps: Record<CaseStep, string> };
-export type SampleCategory = "Claim Reports" | "Investigation Reports" | "Coverage/Eligibility Analysis" | "Benefit Determination Narratives" | "Correspondence" | "Documentation Templates" | "Photo/Evidence Sheets" | "Data & Audit Reports";
-export type PlaceholderPage = { heading: string; paragraphs: string[]; fields: { title: string; value: string }[] };
-export type WorkSample = Labelled & { id: string; title: string; category: SampleCategory; claimType: string; status: string; pages: number; date: string; file?: string; placeholderPages: PlaceholderPage[] };
-export type WorkflowStage = Labelled & { step: string; title: string; objective: string; documentation: string[]; keyQuestions: string[]; outputs: string[]; qualityChecks: string[] };
-export type Technology = Labelled & { group: "Claims Platforms" | "Data & Backend" | "Productivity"; name: string; level: "Working knowledge" | "Proficient" | "Advanced"; enabled: boolean };
-export type SectionCopy = Labelled & { eyebrow: string; title: string; body: string };
-export type SectionKey = "profile" | "capabilities" | "credentials" | "metrics" | "casebook" | "samples" | "workflow" | "quality" | "technology" | "availability" | "documents" | "equipment" | "contact";
+export type Region = {
+  code: string;
+  name: string;
+  country: "CA" | "US" | "REMOTE";
+};
+export type CredentialStatus =
+  "ACTIVE" | "EXPIRED" | "PENDING" | "IN_PROGRESS" | "PLACEHOLDER";
+export type CredentialCategory =
+  | "Licenses"
+  | "Industry Certifications"
+  | "Software"
+  | "Professional Development";
+export type Credential = Labelled & {
+  id: string;
+  name: string;
+  issuer: string;
+  jurisdiction: Region | null;
+  number: string;
+  issued: string;
+  expires: string;
+  status: CredentialStatus;
+  verifyUrl: string;
+  category: CredentialCategory;
+};
+export type Metric = Labelled & {
+  title: string;
+  value: string | number | null;
+  unit: string;
+  note: string;
+};
+export type CaseStep =
+  | "assignment"
+  | "investigation"
+  | "documentation"
+  | "analysis"
+  | "resolution"
+  | "lessons";
+export type CaseStudy = Labelled & {
+  id: string;
+  claimType: string;
+  region: Region;
+  complexity: string;
+  status: string;
+  title: string;
+  summary: string;
+  steps: Record<CaseStep, string>;
+};
+export type SampleCategory =
+  | "Claim Reports"
+  | "Investigation Reports"
+  | "Coverage/Eligibility Analysis"
+  | "Benefit Determination Narratives"
+  | "Correspondence"
+  | "Documentation Templates"
+  | "Photo/Evidence Sheets"
+  | "Data & Audit Reports";
+export type PlaceholderPage = {
+  heading: string;
+  paragraphs: string[];
+  fields: { title: string; value: string }[];
+};
+export type WorkSample = Labelled & {
+  id: string;
+  title: string;
+  category: SampleCategory;
+  claimType: string;
+  status: string;
+  pages: number;
+  date: string;
+  file?: string;
+  placeholderPages: PlaceholderPage[];
+};
+export type WorkflowStage = Labelled & {
+  step: string;
+  title: string;
+  objective: string;
+  documentation: string[];
+  keyQuestions: string[];
+  outputs: string[];
+  qualityChecks: string[];
+};
+export type Technology = Labelled & {
+  group: "Claims Platforms" | "Data & Backend" | "Productivity";
+  name: string;
+  level: "Working knowledge" | "Proficient" | "Advanced";
+  enabled: boolean;
+};
+export type SectionCopy = Labelled & {
+  eyebrow: string;
+  title: string;
+  body: string;
+};
+export type SectionKey =
+  | "profile"
+  | "capabilities"
+  | "credentials"
+  | "metrics"
+  | "casebook"
+  | "samples"
+  | "workflow"
+  | "quality"
+  | "technology"
+  | "availability"
+  | "documents"
+  | "equipment"
+  | "contact";
 export type Portfolio = {
-  profile: Labelled & { name: string; title: string; location: string; email: string; phone: string; linkedin: string; bio: string; yearsExperience: string; background: string; resumeFile: string; specialties: string[] };
+  profile: Labelled & {
+    name: string;
+    title: string;
+    location: string;
+    email: string;
+    phone: string;
+    linkedin: string;
+    bio: string;
+    yearsExperience: string;
+    background: string;
+    resumeFile: string;
+    specialties: string[];
+  };
   seo: { title: string; description: string; ogImage: string };
   navigation: { title: string; id: string }[];
   labels: Record<ContentLabel, string>;
   sections: Record<SectionKey, SectionCopy>;
-  hero: Labelled & { status: string; headline: string[]; subtext: string; visualTitle: string; stages: string[]; flow: string[]; valueLine: string; profileCta: string; casebookCta: string; notice: string };
+  hero: Labelled & {
+    status: string;
+    headline: string[];
+    subtext: string;
+    visualTitle: string;
+    stages: string[];
+    flow: string[];
+    valueLine: string;
+    profileCta: string;
+    casebookCta: string;
+    notice: string;
+  };
   focusAreas: (Labelled & { title: string; enabled: boolean })[];
-  capabilities: (Labelled & { category: string; title: string; description: string; icon: "Search" | "Scale" | "FolderCheck" | "MessagesSquare" | "Database"; enabled: boolean; items: string[] })[];
+  capabilities: (Labelled & {
+    category: string;
+    title: string;
+    description: string;
+    icon: "Search" | "Scale" | "FolderCheck" | "MessagesSquare" | "Database";
+    enabled: boolean;
+    items: string[];
+  })[];
   credentials: Credential[];
   regionOptions: Region[];
-  jurisdictionStatus: { region: Region; status: "LICENSED" | "IN_PROGRESS" | "PLANNED" | "NOT_LICENSED"; visible: boolean }[];
+  jurisdictionStatus: {
+    region: Region;
+    status: "LICENSED" | "IN_PROGRESS" | "PLANNED" | "NOT_LICENSED";
+    visible: boolean;
+  }[];
   metrics: Metric[];
   caseStudies: CaseStudy[];
   workSamples: WorkSample[];
   workflow: WorkflowStage[];
   qualityChecklist: (Labelled & { title: string; description: string })[];
   technology: Technology[];
-  automationCase: Labelled & { title: string; description: string; notice: string; pipeline: string[]; dashboard: { title: string; value: number; note: string }[]; sampleQuery: string; relatedProject: { title: string; url: string; description: string } };
-  availability: Labelled & { status: "AVAILABLE FOR OPPORTUNITIES" | "CURRENTLY ENGAGED" | "OPEN TO CONVERSATIONS"; workTypes: { title: string; enabled: boolean }[]; regions: Region[]; relocationNote: string };
+  automationCase: Labelled & {
+    title: string;
+    description: string;
+    notice: string;
+    pipeline: string[];
+    dashboard: { title: string; value: number; note: string }[];
+    sampleQuery: string;
+    relatedProject: { title: string; url: string; description: string };
+  };
+  availability: Labelled & {
+    status:
+      | "AVAILABLE FOR OPPORTUNITIES"
+      | "CURRENTLY ENGAGED"
+      | "OPEN TO CONVERSATIONS";
+    workTypes: { title: string; enabled: boolean }[];
+    regions: Region[];
+    relocationNote: string;
+  };
   equipment: Labelled & { visible: boolean; items: string[] };
   documents: (Labelled & { name: string; file: string; type: string })[];
   contact: { mode: "mailto" | "formspree" | "resend"; formspreeId: string };
   social: { label: string; url: string }[];
   ui: {
-    all: string; skip: string; backToTop: string; openMenu: string; closeMenu: string; menu: string; navigation: string; connect: string; resume: string; background: string; currentFocus: string; provinceState: string; jurisdictionInterest: string; specialties: string; experience: string; location: string; availability: string;
-    credentialFilters: CredentialCategory[]; credentialEmpty: string; credentialEmptyBody: string; credentialFields: Record<"issuer" | "number" | "issued" | "expires" | "status" | "category", string>; verify: string; credentialNotice: string;
-    metricEmpty: string; metricEmptyBody: string; addMetric: string; metricDisclaimer: string;
-    demoCase: string; caseSteps: { key: CaseStep; title: string }[]; expand: string; collapse: string; complexity: string;
-    sampleCategories: SampleCategory[]; sampleNotice: string; sampleEmpty: string; viewSample: string; view: string; download: string; close: string; zoomIn: string; zoomOut: string; zoomReset: string; previous: string; next: string; page: string; of: string; sampleWatermark: string; redacted: string; pdfNotice: string; print: string;
-    workflowFields: { key: "documentation" | "keyQuestions" | "outputs" | "qualityChecks"; title: string }[]; objective: string; qualityNotice: string; reset: string; technologyNotice: string; queryTitle: string; regions: string; workTypes: string;
-    form: { name: string; email: string; organization: string; message: string; submit: string; sending: string; honeypot: string; required: string; invalidEmail: string; tooLong: string; unavailable: string; mailtoSuccess: string; success: string; error: string; subject: string; hint: string };
-    footer: { title: string; privacy: string; copyright: string; navigate: string; elsewhere: string };
+    all: string;
+    skip: string;
+    backToTop: string;
+    openMenu: string;
+    closeMenu: string;
+    menu: string;
+    navigation: string;
+    connect: string;
+    resume: string;
+    background: string;
+    currentFocus: string;
+    provinceState: string;
+    jurisdictionInterest: string;
+    specialties: string;
+    experience: string;
+    location: string;
+    availability: string;
+    credentialFilters: CredentialCategory[];
+    credentialEmpty: string;
+    credentialEmptyBody: string;
+    credentialFields: Record<
+      "issuer" | "number" | "issued" | "expires" | "status" | "category",
+      string
+    >;
+    verify: string;
+    credentialNotice: string;
+    metricEmpty: string;
+    metricEmptyBody: string;
+    addMetric: string;
+    metricDisclaimer: string;
+    demoCase: string;
+    caseSteps: { key: CaseStep; title: string }[];
+    expand: string;
+    collapse: string;
+    complexity: string;
+    sampleCategories: SampleCategory[];
+    sampleNotice: string;
+    sampleEmpty: string;
+    viewSample: string;
+    view: string;
+    download: string;
+    close: string;
+    zoomIn: string;
+    zoomOut: string;
+    zoomReset: string;
+    previous: string;
+    next: string;
+    page: string;
+    of: string;
+    sampleWatermark: string;
+    redacted: string;
+    pdfNotice: string;
+    print: string;
+    workflowFields: {
+      key: "documentation" | "keyQuestions" | "outputs" | "qualityChecks";
+      title: string;
+    }[];
+    objective: string;
+    qualityNotice: string;
+    reset: string;
+    technologyNotice: string;
+    queryTitle: string;
+    regions: string;
+    workTypes: string;
+    form: {
+      name: string;
+      email: string;
+      organization: string;
+      message: string;
+      submit: string;
+      sending: string;
+      honeypot: string;
+      required: string;
+      invalidEmail: string;
+      tooLong: string;
+      unavailable: string;
+      mailtoSuccess: string;
+      success: string;
+      error: string;
+      subject: string;
+      hint: string;
+    };
+    footer: {
+      title: string;
+      privacy: string;
+      copyright: string;
+      navigate: string;
+      elsewhere: string;
+    };
   };
-  legacy: { note: string; identity: string[]; hero: string[]; services: { title: string; description: string; bullets: string[] }[]; process: string[][]; formats: string[]; focus: string[]; about: string[]; metrics: string[][]; contact: string[]; footer: string[] };
+  legacy: {
+    note: string;
+    identity: string[];
+    hero: string[];
+    services: { title: string; description: string; bullets: string[] }[];
+    process: string[][];
+    formats: string[];
+    focus: string[];
+    about: string[];
+    metrics: string[][];
+    contact: string[];
+    footer: string[];
+  };
 };
